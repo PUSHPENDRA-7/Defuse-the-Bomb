@@ -7,21 +7,23 @@ class Solution {
             return result;
         }
 
+        int n = code.length;
+
         //case1
         if (k > 0) {
-            for (int i = 0; i < code.length; i++) {
+            for (int i = 0; i < n; i++) {
                 int sum = 0;
-                for (int j = 1; j < code.length; j++) { 
-                    sum += code[(i + j) % code.length];
+                for (int j = 1; j <= k; j++) {
+                    sum += code[(i + j) % n];
                 }
                 result[i] = sum;
             }
         } else {
             //case2
-            for (int i = 0; i < code.length; i++) {
+            for (int i = 0; i < n; i++) {
                 int sum = 0;
-                for (int j = 1; j <= -1 * k; j++) {
-                    sum += code[(i - j + code.length) % code.length];
+                for (int j = 1; j <= -k; j++) {
+                    sum += code[(i - j + n) % n];
                 }
                 result[i] = sum;
             }
@@ -29,4 +31,4 @@ class Solution {
         }
         return result;
     }
-}  
+}
